@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jameen | Digital Land Revolution</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Syncopate:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- 3D Background Layer -->
+    <canvas id="terrain-map"></canvas>
+    <div class="grid-overlay"></div>
+    <div class="vignette"></div>
+
+    <!-- HUD Interface -->
+    <nav class="hud">
+        <div class="hud-top">
+            <div class="logo">JAMEEN <span class="status-dot"></span></div>
+            <div class="coords">LAT: 27.7172° N | LON: 85.3240° E</div>
+            <button id="theme-btn" class="theme-btn" title="Switch Theme">
+                <span class="theme-icon">🌙</span>
+            </button>
+            <div class="slide-counter">
+                <span id="current">01</span><span class="sep">/</span><span id="total">16</span>
+            </div>
+        </div>
+        <div class="hud-left">
+            <div class="line"></div>
+            <div class="marker">SYS.READY</div>
+            <div class="line"></div>
+        </div>
+        <div class="hud-right">
+            <div class="line"></div>
+            <div class="marker">SECURE.CONN</div>
+            <div class="line"></div>
+        </div>
+        <div class="hud-bottom">
+            <div class="progress-track">
+                <div class="progress-bar" id="progress"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 3D Scene -->
+    <main class="scene" id="scene">
+
+        <!-- Slide 1: Hero -->
+        <section class="slide active" data-index="1">
+            <div class="holo-container center">
+                <div class="scanner-line"></div>
+                <h1 class="hero-title">JAMEEN</h1>
+                <div class="hero-subtitle">NEPAL'S TRUSTED DIGITAL LAND MARKETPLACE</div>
+                <div class="hero-tagline">SIMPLE • TRANSPARENT • SECURE</div>
+                <div class="hero-model">
+                    <div class="cube-wrapper">
+                        <div class="holo-cube">
+                            <div class="face front"><span>J</span></div>
+                            <div class="face back"><span>J</span></div>
+                            <div class="face right"><span>J</span></div>
+                            <div class="face left"><span>J</span></div>
+                            <div class="face top"></div>
+                            <div class="face bottom"></div>
+                            <!-- Inner glowing core -->
+                            <div class="cube-core"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="start-prompt">SUPPORTING UN SDG 9: INDUSTRY, INNOVATION AND INFRASTRUCTURE</div>
+            </div>
+        </section>
+
+        <!-- Slide 2: The Problem -->
+        <section class="slide" data-index="2">
+            <div class="holo-container split">
+                <div class="content-col">
+                    <h2 class="section-header">MARKET FRICTION</h2>
+                    <h3 class="problem-statement">Land Trading in Nepal is Broken</h3>
+                    <div class="error-list">
+                        <div class="error-item">
+                            <span class="icon">⚠️</span>
+                            <div class="text">
+                                <strong>Corruption & Cost</strong>
+                                <p>Bribes ~25,000 NPR & High Fees</p>
+                            </div>
+                        </div>
+                        <div class="error-item">
+                            <span class="icon">🌫️</span>
+                            <div class="text">
+                                <strong>Lack of Transparency</strong>
+                                <p>Hidden prices and unclear ownership history</p>
+                            </div>
+                        </div>
+                        <div class="error-item">
+                            <span class="icon">�</span>
+                            <div class="text">
+                                <strong>Inefficient Process</strong>
+                                <p>Wait times up to 13 days</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="visual-col">
+                    <div class="warning-box">
+                        <div class="warning-header">CRITICAL NEED</div>
+                        <div class="stat-big">TRUST</div>
+                        <div class="stat-label">Is the Missing Currency</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 3: The Solution -->
+        <section class="slide" data-index="3">
+            <div class="holo-container center">
+                <h2 class="section-header">THE JAMEEN PROTOCOL</h2>
+                <div class="solution-grid">
+                    <div class="sol-card">
+                        <div class="sol-icon">🛡️</div>
+                        <h3>GIS Integration</h3>
+                        <p>Satellite imagery & Plot Details</p>
+                    </div>
+                    <div class="sol-card featured">
+                        <div class="sol-icon">🔐</div>
+                        <h3>Secure Escrow</h3>
+                        <p>Bank-partnered payment protection</p>
+                    </div>
+                    <div class="sol-card">
+                        <div class="sol-icon">⚡</div>
+                        <h3>Centralized Platform</h3>
+                        <p>National Marketplace (B2C)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 4: Core Values -->
+        <section class="slide" data-index="4">
+            <div class="holo-container">
+                <h2 class="section-header">CORE BELIEFS</h2>
+                <div class="beliefs-grid">
+                    <div class="belief-card">
+                        <div class="belief-icon">🤝</div>
+                        <div class="belief-content">
+                            <h3>INTEGRITY</h3>
+                            <div class="belief-line"></div>
+                            <p>Uncompromising adherence to verification standards. We don't just list land; we certify
+                                trust.</p>
+                        </div>
+                    </div>
+                    <div class="belief-card">
+                        <div class="belief-icon">🔍</div>
+                        <div class="belief-content">
+                            <h3>TRANSPARENCY</h3>
+                            <div class="belief-line"></div>
+                            <p>Radical openness in pricing and history. No hidden fees, no hidden owners, no hidden
+                                risks.</p>
+                        </div>
+                    </div>
+                    <div class="belief-card">
+                        <div class="belief-icon">⚖️</div>
+                        <div class="belief-content">
+                            <h3>FAIRNESS</h3>
+                            <div class="belief-line"></div>
+                            <p>A level playing field for all. We democratize access to real estate information and
+                                opportunity.</p>
+                        </div>
+                    </div>
+                    <div class="belief-card">
+                        <div class="belief-icon">👥</div>
+                        <div class="belief-content">
+                            <h3>CLIENTS FIRST</h3>
+                            <div class="belief-line"></div>
+                            <p>Every feature, every check, and every policy is designed to protect and empower the user.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 5: Target Market (Moved from 10) -->
+        <section class="slide" data-index="5">
+            <div class="holo-container split">
+                <div class="content-col">
+                    <h2 class="section-header">TOTAL MARKET</h2>
+                    <div class="market-stats">
+                        <div class="m-stat">
+                            <span class="val">453.91B</span>
+                            <span class="lbl">Market Size (NPR)</span>
+                        </div>
+                        <div class="m-stat">
+                            <span class="val">538,128</span>
+                            <span class="lbl">Annual Transactions</span>
+                        </div>
+                    </div>
+                    <div class="market-focus">
+                        <div class="focus-item">
+                            <span class="lbl">Primary Focus:</span> <span class="val-sm">Kathmandu</span>
+                        </div>
+                        <div class="focus-item">
+                            <span class="lbl">Expansion:</span> <span class="val-sm">Pokhara</span>
+                        </div>
+                    </div>
+                    <p class="market-text">Digital Readiness: 109% Mobile Penetration, 56% Web Access. Government push
+                        for digital transformation.</p>
+                </div>
+                <div class="visual-col">
+                    <div class="graph-container">
+                        <div class="bar b1"></div>
+                        <div class="bar b2"></div>
+                        <div class="bar b3"></div>
+                        <div class="bar b4"></div>
+                        <div class="graph-label">DIGITAL ADOPTION</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 6: Market Analysis (SAM/SOM) -->
+        <section class="slide" data-index="6">
+            <div class="holo-container split">
+                <!-- Visual Column: 3D Funnel -->
+                <div class="visual-col">
+                    <div class="market-funnel-3d">
+                        <!-- TAM -->
+                        <div class="funnel-layer layer-tam">
+                            <div class="layer-bg"></div>
+                            <div class="layer-content">
+                                <div class="l-header">
+                                    <span class="l-icon">🌐</span>
+                                    <span class="l-title">TAM</span>
+                                </div>
+                                <div class="l-desc">TOTAL ADDRESSABLE MARKET</div>
+                            </div>
+                        </div>
+
+                        <!-- SAM -->
+                        <div class="funnel-layer layer-sam">
+                            <div class="layer-bg"></div>
+                            <div class="layer-content">
+                                <div class="l-header">
+                                    <span class="l-icon">🎯</span>
+                                    <span class="l-title">SAM</span>
+                                </div>
+                                <div class="l-desc">SERVICEABLE AVAILABLE MARKET</div>
+                                <div class="l-val">NPR 832B</div>
+                            </div>
+                        </div>
+
+                        <!-- SOM -->
+                        <div class="funnel-layer layer-som">
+                            <div class="layer-bg"></div>
+                            <div class="layer-content">
+                                <div class="l-header">
+                                    <span class="l-icon">💎</span>
+                                    <span class="l-title">SOM</span>
+                                </div>
+                                <div class="l-desc">SERVICEABLE OBTAINABLE MARKET</div>
+                                <div class="l-val highlight">NPR 14.98B</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Column: Explanations -->
+                <div class="content-col">
+                    <h2 class="section-header">MARKET ANALYSIS</h2>
+                    <div class="funnel-details">
+                        <div class="detail-item">
+                            <h3>TAM: The Full Potential</h3>
+                            <p>The entire land transfer ecosystem in Nepal, valued at hundreds of billions.</p>
+                        </div>
+
+                        <div class="detail-item">
+                            <h3>SAM: Digital Reach</h3>
+                            <p>Focusing on the <strong>73% Mobile</strong> and <strong>55% Web</strong> connected
+                                population.</p>
+                            <div class="calc-box">0.73 × 0.55 × TAM = <strong>NPR 832 Billion</strong></div>
+                        </div>
+
+                        <div class="detail-item">
+                            <h3>SOM: Our Target</h3>
+                            <p>Realistic capture of <strong>40%</strong> of the digital market with <strong>30%</strong>
+                                conversion.</p>
+                            <div class="calc-box highlight">(0.4 × 0.3 × 0.2) × SAM = <strong>NPR 14.98 Billion</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 7: Business Model -->
+        <section class="slide" data-index="7">
+            <div class="holo-container">
+                <h2 class="section-header">REVENUE STREAMS</h2>
+                <div class="revenue-grid">
+                    <!-- Stream 1 -->
+                    <div class="rev-card primary">
+                        <div class="rev-icon">💎</div>
+                        <div class="rev-content">
+                            <h3>Transaction Fee</h3>
+                            <div class="rev-val">5%</div>
+                            <p class="rev-desc">Of total transaction value upon successful deal closure.</p>
+                        </div>
+                    </div>
+
+                    <!-- Stream 2 -->
+                    <div class="rev-card">
+                        <div class="rev-icon">🛡️</div>
+                        <div class="rev-content">
+                            <h3>Verification</h3>
+                            <div class="rev-val">NPR 2k - 10k</div>
+                            <p class="rev-desc">Document verification, GIS mapping & legal checks.</p>
+                        </div>
+                    </div>
+
+                    <!-- Stream 3 -->
+                    <div class="rev-card">
+                        <div class="rev-icon">🔐</div>
+                        <div class="rev-content">
+                            <h3>Escrow Service</h3>
+                            <div class="rev-val">NPR 1.5k - 3k</div>
+                            <p class="rev-desc">Secure fund transfer & payment protection fee.</p>
+                        </div>
+                    </div>
+
+                    <!-- Stream 4 -->
+                    <div class="rev-card">
+                        <div class="rev-icon">🔌</div>
+                        <div class="rev-content">
+                            <h3>API Access <span class="future-tag">FUTURE PLAN</span></h3>
+                            <div class="rev-val">Subscription</div>
+                            <p class="rev-desc">Data access for Government & Developers.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="revenue-forecast-box">
+                    <div class="forecast-item">
+                        <span class="f-lbl">Break-even Point</span>
+                        <span class="f-val">13-18 Months</span>
+                    </div>
+                    <div class="forecast-divider"></div>
+                    <div class="forecast-item">
+                        <span class="f-lbl">Year 1 Revenue</span>
+                        <span class="f-val">NPR 7-20 Lakhs</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 8: Financial Health -->
+
+        <section class="slide" data-index="8">
+            <div class="holo-container">
+                <h2 class="section-header">FINANCIAL HEALTH & CAPITAL</h2>
+
+                <div class="fin-dashboard">
+                    <!-- Main Capital Stat -->
+                    <div class="fin-hero">
+                        <div class="fin-icon-lg">💰</div>
+                        <div class="fin-hero-content">
+                            <div class="fin-hero-val">NPR 52.25 Lakhs</div>
+                            <div class="fin-hero-lbl">Total Capital Requirement</div>
+                        </div>
+                    </div>
+
+                    <!-- Ratios -->
+                    <div class="fin-ratios">
+                        <div class="ratio-card">
+                            <div class="ratio-icon">📊</div>
+                            <div class="ratio-info">
+                                <div class="ratio-val">~18.75%</div>
+                                <div class="ratio-lbl">Projected Debt Ratio</div>
+                            </div>
+                        </div>
+                        <div class="ratio-card">
+                            <div class="ratio-icon">⚖️</div>
+                            <div class="ratio-info">
+                                <div class="ratio-val">~22%</div>
+                                <div class="ratio-lbl">Debt-to-Equity Ratio</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fund Utilization -->
+                    <div class="fund-allocation">
+                        <h3>FUND UTILIZATION</h3>
+                        <div class="allocation-grid">
+                            <div class="alloc-item">
+                                <div class="alloc-bar" style="width: 100%; --alloc-color: var(--holo-green);">
+                                    <span class="alloc-pct">Primary</span>
+                                </div>
+                                <div class="alloc-text">
+                                    <h4>MVP Development</h4>
+                                    <p>Platform Build & Core Features</p>
+                                </div>
+                            </div>
+                            <div class="alloc-item">
+                                <div class="alloc-bar" style="width: 80%; --alloc-color: var(--holo-cyan);">
+                                    <span class="alloc-pct">Strategic</span>
+                                </div>
+                                <div class="alloc-text">
+                                    <h4>B2G Partnerships</h4>
+                                    <p>Securing Government Integrations</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 9: Key Risks -->
+        <section class="slide" data-index="9">
+            <div class="holo-container">
+                <h2 class="section-header">KEY RISKS & MITIGATION</h2>
+                <div class="risk-grid">
+                    <!-- Risk 1 -->
+                    <div class="risk-card">
+                        <div class="risk-icon-box">
+                            <div class="risk-icon">🔓</div>
+                        </div>
+                        <div class="risk-content">
+                            <div class="risk-title">TECHNOLOGICAL</div>
+                            <div class="risk-desc">Potential data breaches or system downtime.</div>
+                            <div class="mitigation-box">
+                                <div class="mit-label">MITIGATION</div>
+                                <div class="mit-text">MFA, End-to-End Encryption & Redundant Backups.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Risk 2 -->
+                    <div class="risk-card">
+                        <div class="risk-icon-box">
+                            <div class="risk-icon">📉</div>
+                        </div>
+                        <div class="risk-content">
+                            <div class="risk-title">BEHAVIORAL</div>
+                            <div class="risk-desc">Low user adoption due to trust issues.</div>
+                            <div class="mitigation-box">
+                                <div class="mit-label">MITIGATION</div>
+                                <div class="mit-text">Awareness Campaigns & Community Trust Building.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Risk 3 -->
+                    <div class="risk-card">
+                        <div class="risk-icon-box">
+                            <div class="risk-icon">⚠️</div>
+                        </div>
+                        <div class="risk-content">
+                            <div class="risk-title">OPERATIONAL</div>
+                            <div class="risk-desc">Data inaccuracy in initial listings.</div>
+                            <div class="mitigation-box">
+                                <div class="mit-label">MITIGATION</div>
+                                <div class="mit-text">Strict Pre-listing Verification & Field Checks.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 10: Tech Stack (Moved from 5) -->
+        <section class="slide" data-index="10">
+            <div class="holo-container">
+                <h2 class="section-header">SYSTEM ARCHITECTURE</h2>
+                <div class="tech-grid">
+                    <!-- Module 1: GIS -->
+                    <div class="tech-module">
+                        <div class="module-header">
+                            <span class="module-icon">🗺️</span>
+                            <span class="module-title">GIS CORE</span>
+                            <span class="module-status online">ONLINE</span>
+                        </div>
+                        <div class="module-body">
+                            <div class="terminal-line">> Cadastral Mapping Integrated</div>
+                            <div class="terminal-line">> Satellite Overlay: ACTIVE</div>
+                            <div class="terminal-line">> Boundary Verification: PRECISE</div>
+                        </div>
+                    </div>
+
+                    <!-- Module 2: Security -->
+                    <div class="tech-module">
+                        <div class="module-header">
+                            <span class="module-icon">🛡️</span>
+                            <span class="module-title">SECURITY LAYER</span>
+                            <span class="module-status secure">SECURE</span>
+                        </div>
+                        <div class="module-body">
+                            <div class="terminal-line">> Honeypots: DEPLOYED</div>
+                            <div class="terminal-line">> Encryption: AES-256</div>
+                            <div class="terminal-line">> Threat Detection: REAL-TIME</div>
+                        </div>
+                    </div>
+
+                    <!-- Module 3: Blockchain -->
+                    <div class="tech-module future">
+                        <div class="module-header">
+                            <span class="module-icon">⛓️</span>
+                            <span class="module-title">BLOCKCHAIN</span>
+                            <span class="module-status dev">FUTURE DEV</span>
+                        </div>
+                        <div class="module-body">
+                            <div class="terminal-line">> Smart Contracts</div>
+                            <div class="terminal-line">> Ownership Ledger</div>
+                            <div class="terminal-line">> Trust Protocol</div>
+                        </div>
+                    </div>
+
+                    <!-- Module 4: AI Engine -->
+                    <div class="tech-module future">
+                        <div class="module-header">
+                            <span class="module-icon">🤖</span>
+                            <span class="module-title">AI AGENTS</span>
+                            <span class="module-status beta">FUTURE DEV</span>
+                        </div>
+                        <div class="module-body">
+                            <div class="terminal-line">> Valuation Model</div>
+                            <div class="terminal-line">> Fraud Pattern Recognition</div>
+                            <div class="terminal-line">> Design Suggestions</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 11: Short Term Strategy -->
+        <section class="slide" data-index="11">
+            <div class="holo-container">
+                <h2 class="section-header">SHORT-TERM STRATEGY (1-2 YRS)</h2>
+                <div class="strategy-grid">
+                    <!-- Phase 1 -->
+                    <div class="strat-card">
+                        <div class="strat-header">
+                            <div class="strat-icon">🚀</div>
+                            <div class="strat-phase">PHASE 01</div>
+                        </div>
+                        <div class="strat-body">
+                            <h3>MVP LAUNCH</h3>
+                            <div class="strat-line"></div>
+                            <ul class="strat-details">
+                                <li>Core Platform Release</li>
+                                <li>Verification Features</li>
+                                <li>Initial User Onboarding</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Phase 2 -->
+                    <div class="strat-card">
+                        <div class="strat-header">
+                            <div class="strat-icon">📢</div>
+                            <div class="strat-phase">PHASE 02</div>
+                        </div>
+                        <div class="strat-body">
+                            <h3>MARKET PENETRATION</h3>
+                            <div class="strat-line"></div>
+                            <ul class="strat-details">
+                                <li>Influencer Partnerships</li>
+                                <li>Bank Integrations</li>
+                                <li>Target: 500 Users / 100 Listings</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Phase 3 -->
+                    <div class="strat-card">
+                        <div class="strat-header">
+                            <div class="strat-icon">⚙️</div>
+                            <div class="strat-phase">PHASE 03</div>
+                        </div>
+                        <div class="strat-body">
+                            <h3>OPERATIONS SETUP</h3>
+                            <div class="strat-line"></div>
+                            <ul class="strat-details">
+                                <li>Support Team Establishment</li>
+                                <li>Complaint Handling System</li>
+                                <li>Legal Framework Solidification</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 11: Long Term Vision -->
+        <section class="slide" data-index="12">
+            <div class="holo-container">
+                <h2 class="section-header">LONG-TERM VISION (3-5+ YRS)</h2>
+                <div class="vision-roadmap">
+                    <div class="vision-step">
+                        <div class="vision-marker">
+                            <div class="marker-dot"></div>
+                            <div class="marker-line"></div>
+                        </div>
+                        <div class="vision-card">
+                            <div class="vision-icon">🤖</div>
+                            <div class="vision-content">
+                                <h3>AI ECOSYSTEM</h3>
+                                <div class="vision-tag">TECH EXPANSION</div>
+                                <p>Full deployment of AI Valuation Agents and Fraud Detection patterns.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vision-step">
+                        <div class="vision-marker">
+                            <div class="marker-dot"></div>
+                            <div class="marker-line"></div>
+                        </div>
+                        <div class="vision-card">
+                            <div class="vision-icon">🇳🇵</div>
+                            <div class="vision-content">
+                                <h3>NATIONAL EXPANSION</h3>
+                                <div class="vision-tag">SCALE</div>
+                                <p>Nationwide coverage across Nepal, focusing on key urban centers. 3D Metaverse land
+                                    viewing.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vision-step">
+                        <div class="vision-marker">
+                            <div class="marker-dot"></div>
+                        </div>
+                        <div class="vision-card">
+                            <div class="vision-icon">🚀</div>
+                            <div class="vision-content">
+                                <h3>EXIT STRATEGY</h3>
+                                <div class="vision-tag">FINANCIAL GOAL</div>
+                                <p>Targeting Merger/Acquisition in 7-10 years or Strategic Stock Buyout in 5-7 years.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 12: Why Invest -->
+        <section class="slide" data-index="13">
+            <div class="holo-container center">
+                <h2 class="section-header">WHY INVEST IN JAMEEN?</h2>
+                <div class="invest-grid">
+                    <!-- Transformation 1 -->
+                    <div class="transform-card">
+                        <div class="state old">
+                            <div class="state-icon">🌫️</div>
+                            <h3>OPAQUE</h3>
+                        </div>
+                        <div class="transform-arrow">
+                            <div class="arrow-line"></div>
+                            <div class="arrow-head">▶</div>
+                        </div>
+                        <div class="state new">
+                            <div class="state-icon">🔍</div>
+                            <h3>TRANSPARENT</h3>
+                            <p>GIS Mapping & Verified Listings</p>
+                        </div>
+                    </div>
+
+                    <!-- Transformation 2 -->
+                    <div class="transform-card">
+                        <div class="state old">
+                            <div class="state-icon">🐌</div>
+                            <h3>INEFFICIENT</h3>
+                        </div>
+                        <div class="transform-arrow">
+                            <div class="arrow-line"></div>
+                            <div class="arrow-head">▶</div>
+                        </div>
+                        <div class="state new">
+                            <div class="state-icon">⚡</div>
+                            <h3>CONVENIENT</h3>
+                            <p>Centralized Mobile Transactions</p>
+                        </div>
+                    </div>
+
+                    <!-- Transformation 3 -->
+                    <div class="transform-card">
+                        <div class="state old">
+                            <div class="state-icon">⚠️</div>
+                            <h3>RISKY</h3>
+                        </div>
+                        <div class="transform-arrow">
+                            <div class="arrow-line"></div>
+                            <div class="arrow-head">▶</div>
+                        </div>
+                        <div class="state new">
+                            <div class="state-icon">🛡️</div>
+                            <h3>SECURE</h3>
+                            <p>Escrow & Encryption</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 13: The Team -->
+        <section class="slide" data-index="14">
+            <div class="holo-container center">
+                <h2 class="section-header">THE FOUNDING TEAM</h2>
+                <div class="team-grid-refined">
+                    <!-- Member 1 -->
+                    <div class="team-card">
+                        <div class="card-header">
+                            <div class="role-badge">CEO</div>
+                            <div class="card-status">ACTIVE</div>
+                        </div>
+                        <div class="member-avatar">
+                            <img src="founder/CEO.png" alt="Pawan Poudel">
+                        </div>
+                        <div class="member-details">
+                            <h3>Pawan Poudel</h3>
+                            <p class="member-title">Vision & Strategy</p>
+                            <div class="skill-tags">
+                                <span>Leadership</span>
+                                <span>Product</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Member 2 -->
+                    <div class="team-card">
+                        <div class="card-header">
+                            <div class="role-badge">CIO</div>
+                            <div class="card-status">ACTIVE</div>
+                        </div>
+                        <div class="member-avatar">
+                            <img src="founder/CIO.webp" alt="Sarun Maharjan">
+                        </div>
+                        <div class="member-details">
+                            <h3>Sarun Maharjan</h3>
+                            <p class="member-title">Tech Infrastructure</p>
+                            <div class="skill-tags">
+                                <span>Architecture</span>
+                                <span>Security</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Member 3 -->
+                    <div class="team-card">
+                        <div class="card-header">
+                            <div class="role-badge">CFO</div>
+                            <div class="card-status">ACTIVE</div>
+                        </div>
+                        <div class="member-avatar">
+                            <img src="founder/CFO.jpg" alt="Bijee Dangol">
+                        </div>
+                        <div class="member-details">
+                            <h3>Bijee Dangol</h3>
+                            <p class="member-title">Finance & Revenue</p>
+                            <div class="skill-tags">
+                                <span>Financials</span>
+                                <span>Compliance</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Member 4 -->
+                    <div class="team-card">
+                        <div class="card-header">
+                            <div class="role-badge">CMO</div>
+                            <div class="card-status">ACTIVE</div>
+                        </div>
+                        <div class="member-avatar">
+                            <img src="founder/CMO.png" alt="Runa Maphu">
+                        </div>
+                        <div class="member-details">
+                            <h3>Runa Maphu</h3>
+                            <p class="member-title">Marketing & Growth</p>
+                            <div class="skill-tags">
+                                <span>Branding</span>
+                                <span>Outreach</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Member 5 -->
+                    <div class="team-card">
+                        <div class="card-header">
+                            <div class="role-badge">COO</div>
+                            <div class="card-status">ACTIVE</div>
+                        </div>
+                        <div class="member-avatar">
+                            <img src="founder/COO.jpg" alt="Anushree Pradhan">
+                        </div>
+                        <div class="member-details">
+                            <h3>Anushree Pradhan</h3>
+                            <p class="member-title">Operations</p>
+                            <div class="skill-tags">
+                                <span>Logistics</span>
+                                <span>HR</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-equity-box">
+                    <span class="equity-icon">🤝</span>
+                    <span class="equity-text">EQUAL 20% EQUITY SPLIT • SHARED VISION • COLLECTIVE LEADERSHIP</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 14: Impact -->
+        <section class="slide" data-index="15">
+            <div class="holo-container center">
+                <h2 class="section-header">UN SDG 9: INDUSTRY, INNOVATION</h2>
+                <div class="impact-network">
+                    <!-- Central SDG Node -->
+                    <div class="sdg-core">
+                        <div class="sdg-ring"></div>
+                        <div class="sdg-content">
+                            <span class="sdg-icon">�️</span>
+                            <h3>SDG 9</h3>
+                            <p>Sustainable Cities & Communities</p>
+                        </div>
+                    </div>
+
+                    <!-- Connecting Lines (Visualized via CSS) -->
+
+                    <!-- Satellite Nodes -->
+                    <div class="impact-node node-1">
+                        <div class="i-icon">📊</div>
+                        <h4>Data-Driven Planning</h4>
+                        <p>Optimizing land use via GIS analytics.</p>
+                    </div>
+
+                    <div class="impact-node node-2">
+                        <div class="i-icon">⚖️</div>
+                        <h4>Fair Access</h4>
+                        <p>Democratizing property ownership.</p>
+                    </div>
+
+                    <div class="impact-node node-3">
+                        <div class="i-icon">🌿</div>
+                        <h4>Eco-Friendly</h4>
+                        <p>Paperless digital transactions.</p>
+                    </div>
+
+                    <div class="impact-node node-4">
+                        <div class="i-icon">🛡️</div>
+                        <h4>Fraud Reduction</h4>
+                        <p>Secure & transparent ecosystem.</p>
+                    </div>
+                </div>
+
+                <div class="impact-stats-bar">
+                    <div class="i-stat">
+                        <span class="i-val">100%</span>
+                        <span class="i-lbl">Transparency</span>
+                    </div>
+                    <div class="i-sep"></div>
+                    <div class="i-stat">
+                        <span class="i-val">0%</span>
+                        <span class="i-lbl">Paper Waste</span>
+                    </div>
+                    <div class="i-sep"></div>
+                    <div class="i-stat">
+                        <span class="i-val">∞</span>
+                        <span class="i-lbl">Future Ready</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 15: CTA -->
+        <section class="slide" data-index="16">
+            <div class="holo-container center">
+                <div class="final-frontier">
+                    <div class="final-logo-container">
+                        <div class="final-logo-glow"></div>
+                        <div class="final-logo">JAMEEN</div>
+                    </div>
+
+                    <h2 class="final-text">BUILDING TRUST IN EVERY TRANSACTION</h2>
+
+                    <div class="contact-grid">
+                        <div class="contact-item">
+                            <span class="c-icon">🌐</span>
+                            <span class="c-text">www.jameen.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="c-icon">📧</span>
+                            <span class="c-text">contact@jameen.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="c-icon">📍</span>
+                            <span class="c-text">Kathmandu, Nepal</span>
+                        </div>
+                    </div>
+
+                    <div class="cta-buttons">
+                        <button class="cta-btn primary">JOIN THE REVOLUTION</button>
+                        <button class="cta-btn secondary" onclick="location.reload()">REPLAY SEQUENCE</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Nav Controls -->
+    <div class="nav-controls">
+        <button id="prev-btn" class="nav-arrow">❮</button>
+        <button id="next-btn" class="nav-arrow">❯</button>
+    </div>
+
+    <!-- Tech Detail Modal -->
+    <div id="tech-modal" class="tech-modal">
+        <div class="modal-content">
+            <h3 id="modal-title">MODULE TITLE</h3>
+            <div class="modal-line"></div>
+            <p id="modal-desc">Module description goes here.</p>
+            <button id="modal-close" class="modal-close">CLOSE TERMINAL</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
